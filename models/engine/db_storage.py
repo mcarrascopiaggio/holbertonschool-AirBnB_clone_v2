@@ -1,19 +1,14 @@
 #!/usr/bin/python3
 """Engine to save in the data base"""
-from multiprocessing import pool
-from re import S
 from sqlalchemy import create_engine
 from models.base_model import Base
-from sqlalchemy.orn import sessionmaker
-from sqlalchemy.orm import scoped_session
-from model.state import State
-from model.city import City
-from model.user import User
-from model.review import Review
-from model.place import Place
-from model.base_model import BaseModel
-from model.amenity import Amenity
-
+from sqlalchemy.orm import sessionmaker, scoped_session
+from models.state import State
+from models.city import City
+from models.user import User
+from models.review import Review
+from models.place import Place
+from models.amenity import Amenity
 from os import getenv
 
 MySQL_user = getenv("HBNB_MYSQL_USER")

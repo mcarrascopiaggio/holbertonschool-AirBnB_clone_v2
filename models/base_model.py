@@ -13,11 +13,9 @@ class BaseModel:
     
     id = Column(String(60), nullable=False, primary_key=True)
     
-    created_at = Column(DateTime(default=datetime.utcnow()),
-                       nullable=False)
+    created_at = Column(DateTime,default=datetime.utcnow(), nullable=False)
     
-    updated_at = Column(DateTime(default=datetime.utcnow()),
-                       nullable=False)
+    updated_at = Column(DateTime,default=datetime.utcnow(), nullable=False)
     
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
