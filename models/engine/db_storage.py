@@ -25,7 +25,7 @@ class DBStorage:
     def __init__(self):
         """Init"""
         
-        self.__engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+        self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}"
                                       .format(MySQL_user, MySQL_password,
                                               MySQL_host, MySQL_database,
                                               pool_pre_ping=True))
