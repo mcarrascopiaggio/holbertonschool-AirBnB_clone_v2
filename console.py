@@ -220,7 +220,7 @@ class HBNBCommand(cmd.Cmd):
         array = []
         args = arg.split()
         if len(arg) >= 1:
-            if args[0] in self.clases:
+            if args[0] in HBNBCommand.classes:
                 aux_dictionary = models.storage.all()
                 for key, value in aux_dictionary.items():
                     if key.split(".")[0] == args[0]:
