@@ -11,6 +11,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 import models
+from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -216,22 +217,26 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
+        print("AAAAAAAAA")
         print_list = []
-
+        
+        print("C",args)
         if args:
+            print("BBBBBBBB")
             args = args.split(' ')[0]  # remove possible trailing args
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
 
             aux_dictionary = models.storage.all()
-            for k, v in aux_dictionary.items():
+            for k, v in HBNBCommand.classes[args].items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
 
-            else:
-                for k, v in aux_dictionary.items():
-                    print_list.append(str(v))
+        else:
+            print("Estoy en el else")
+            for k, v in HBNBCommand.classes[args].items():
+                print_list.append(str(v))
 
         print(print_list)
 

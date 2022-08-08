@@ -39,7 +39,7 @@ class DBStorage:
         object_dict = {}
         
         if cls is None:
-            objects = self.__engine.query(User,State, Review,
+            objects = self.__session.query(User,State, Review,
                                           Place, City, Amenity). all()
             
             for obj in objects:
@@ -50,7 +50,7 @@ class DBStorage:
                 
                 object_dict[key] = obj
         else:
-            objects = self.__engine.query(cls). all()
+            objects = self.__session.query(cls). all()
             
             for obj in objects:
                 obj_name = obj.__class__.__name__
