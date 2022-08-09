@@ -215,51 +215,45 @@ class HBNBCommand(cmd.Cmd):
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
-    def do_all(self, arg):
-        """Command used to print all created objects."""
-        array = []
-        args = arg.split()
-        if len(arg) >= 1:
-            if args[0] in HBNBCommand.classes:
-                aux_dictionary = models.storage.all()
-                for key, value in aux_dictionary.items():
-                    if key.split(".")[0] == args[0]:
-                        string = str(value)
-                        array.append(string)
-                print(array)
-            else:
+    def do_all(self, args):
+        """ Shows all objects, or all objects of a class"""
+        print_list = []
+
+        if args:
+            args = args.split(' ')[0]  # remove possible trailing args
+            if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
+                return
+            for k, v in storage.all(HBNBCommand.classes[args]).items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
         else:
-            aux_dictionary = models.storage.all()
-            for key, value in aux_dictionary.items():
-                string = str(value)
-                array.append(string)
-            print(array)
+            for k, v in storage.all().items():
+                print_list.append(str(v))
 
-    # def do_all(self, args):
-    #     """ Shows all objects, or all objects of a class"""
-    #     print("AAAAAAAAA")
-    #     print_list = []
-        
-    #     print("C",args)
-    #     if args:
-    #         print("BBBBBBBB")
-    #         args = args.split(' ')[0]  # remove possible trailing args
-    #         if args not in HBNBCommand.classes:
+        print(print_list)
+
+    # def do_all(self, arg):
+    #     """Command used to print all created objects."""
+    #     array = []
+    #     args = arg.split()
+    #     if len(arg) >= 1:
+    #         if args[0] in HBNBCommand.classes:
+    #             aux_dictionary = models.storage.all()
+    #             for key, value in aux_dictionary.items():
+    #                 if key.split(".")[0] == args[0]:
+    #                     string = str(value)
+    #                     array.append(string)
+    #             print(array)
+    #         else:
     #             print("** class doesn't exist **")
-    #             return
-
-    #         aux_dictionary = models.storage.all()
-    #         for k, v in HBNBCommand.classes[args].items():
-    #             if k.split('.')[0] == args:
-    #                 print_list.append(str(v))
-
     #     else:
-    #         print("Estoy en el else")
-    #         for k, v in HBNBCommand.classes[args].items():
-    #             print_list.append(str(v))
+    #         aux_dictionary = models.storage.all()
+    #         for key, value in aux_dictionary.items():
+    #             string = str(value)
+    #             array.append(string)
+    #         print(array)
 
-    #     print(print_list)
 
     def help_all(self):
         """ Help information for the all command """
