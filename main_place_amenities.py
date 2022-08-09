@@ -9,14 +9,19 @@ from models.place import Place
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 # creation of a State
+print("STATE CREATION ================================")
 state = State(name="California")
+print("PRE-SAVE")
 state.save()
+print("POST-SAVE")
 
 # creation of a City
+print("CITY CREATION =====================================")
 city = City(state_id=state.id, name="San Francisco")
 city.save()
 
 # creation of a User
+print("USER CREATION ========================")
 user = User(email="john@snow.com", password="johnpwd")
 user.save()
 
