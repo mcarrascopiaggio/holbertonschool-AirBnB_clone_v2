@@ -40,35 +40,45 @@ class Place(BaseModel, Base):
 
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
-        def reviews(self):
-            """Lists all reviews"""
-            all_reviews = self.reviews
-            reviews_array = []
-            for key, value in all_reviews.items():
-                if self.id == value.review_id:
-                    reviews_array.append(value)
-
-            return reviews_array
-        
-        @property
         def amenities(self):
-            """Lists all amenities"""
-            all_amenities = self.amenities
-            amenities_array = []
-            for key, value in all_amenities.items():
-                if self.id == value.amenities_id:
-                    amenities_array.append(value)
-
-            return amenities_array
+            """getter amenity that returns the list of Amenity"""
+            return self.amenity_ids
 
         @amenities.setter
-        def amenities(self, value=None):
-            amenity_ids = []
-            """Sets the list"""
-            if value != None:
-                for amenity in models.storage.all("Amenity").value():
-                    if amenity.place_id == self.id:
-                        amenity_ids.append(value)
+        def amenities(self, obj=None):
+            "Setter amenities"
+            if "Amenity" == type(obj).__name__:
+                self.amenities_ids.append(obj.id)
+        # @property
+        # def reviews(self):
+        #     """Lists all reviews"""
+        #     all_reviews = self.reviews
+        #     reviews_array = []
+        #     for key, value in all_reviews.items():
+        #         if self.id == value.review_id:
+        #             reviews_array.append(value)
+
+        #     return reviews_array
+        
+        # @property
+        # def amenities(self):
+        #     """Lists all amenities"""
+        #     all_amenities = self.amenities
+        #     amenities_array = []
+        #     for key, value in all_amenities.items():
+        #         if self.id == value.amenities_id:
+        #             amenities_array.append(value)
+
+        #     return amenities_array
+
+        # @amenities.setter
+        # def amenities(self, value=None):
+        #     amenity_ids = []
+        #     """Sets the list"""
+        #     if value != None:
+        #         for amenity in models.storage.all("Amenity").value():
+        #             if amenity.place_id == self.id:
+        #                 amenity_ids.append(value)
                         
 place_amenity = Table("place_amenity", Base.metadata,
                           Column("place_id", String(60), ForeignKey("places.id"),
