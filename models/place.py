@@ -2,7 +2,6 @@
 """ Place Module for HBNB project """
 from models import review
 import models
-from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
@@ -44,6 +43,17 @@ class Place(BaseModel, Base):
                           )
 
     if getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def reviews(self):
+            """Lists all reviews"""
+            all_reviews = self.reviews
+            reviews_array = []
+            for key, value in all_reviews.items():
+                if self.id == value.revi_id:
+                    reviews_array.append(value)
+
+            return reviews_array
+        
         @property
         def amenities(self):
             """Lists all amenities"""
