@@ -40,7 +40,7 @@ class DBStorage:
         object_dict = {}
 
         if cls is None:
-            objects = self.__session.query(User, State, Review,Place,
+            objects = self.__session.query(User, State, Review, Place,
                                            City, Amenity). all()
 
             for obj in objects:
