@@ -70,7 +70,7 @@ class test_Place(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
-    
+
     def test_documentation(self):
         """
         check if class has documentation

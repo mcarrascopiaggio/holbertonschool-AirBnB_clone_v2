@@ -30,7 +30,7 @@ class test_review(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.text), str)
-    
+
     def test_documentation(self):
         """
         check if class has documentation
