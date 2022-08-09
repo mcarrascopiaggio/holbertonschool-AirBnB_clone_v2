@@ -20,8 +20,6 @@ class User(BaseModel, Base):
     
     places = relationship("Place", backref="user")
     
-    reviews = relationship("Review", backref="user")
-    
     # email = ''
     # password = ''
     # first_name = ''

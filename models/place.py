@@ -45,17 +45,6 @@ class Place(BaseModel, Base):
 
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
-        def reviews(self):
-            """Lists all reviews"""
-            all_reviews = self.reviews
-            reviews_array = []
-            for key, value in all_reviews.items():
-                if self.id == value.review_id:
-                    reviews_array.append(value)
-
-            return reviews_array
-        
-        @property
         def amenities(self):
             """Lists all amenities"""
             all_amenities = self.amenities
