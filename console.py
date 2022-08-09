@@ -221,7 +221,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(arg) >= 1:
             if args[0] in HBNBCommand.classes:
-                aux_dictionary = models.storage.all()
+                aux_dictionary = models.storage.all(HBNBCommand.classes[args[0]])
                 for key, value in aux_dictionary.items():
                     if key.split(".")[0] == args[0]:
                         string = str(value)
