@@ -26,22 +26,22 @@ class DBStorage:
     def __init__(self):
         """Init"""
 
-        self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}"
-                                .format(MySQL_user, MySQL_password,
-                                MySQL_host, MySQL_database,
-                                pool_pre_ping=True))
+        self.__engine = create_engine(
+            "mysql+mysqldb://{}:{}@{}/{}".format(MySQL_user, MySQL_password,
+                                                 MySQL_host, MySQL_database,
+                                                 pool_pre_ping=True))
 
         if getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
-        
+
     def all(self, cls=None):
         """All objects"""
 
         object_dict = {}
 
         if cls is None:
-            objects = self.__session.query(User, State, Review,
-                                        Place, City, Amenity). all()
+            objects = self.__session.query(User, State, Review,Place,
+                                           City, Amenity). all()
 
             for obj in objects:
                 obj_name = obj.__class__.__name__
