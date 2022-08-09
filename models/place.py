@@ -32,9 +32,9 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
 
     longitude = Column(Float, nullable=True)
-    
+
     reviews = relationship("Review", backref="place")
-    
+
     amenities = relationship("Amenity", secondary="place_amenity",
                              viewonly=False)
 
@@ -65,26 +65,29 @@ class Place(BaseModel, Base):
         def amenities(self, value=None):
             amenity_ids = []
             """Sets the list"""
-            if value != None:
+            if value is not None:
                 for amenity in models.storage.all("Amenity").value():
                     if amenity.place_id == self.id:
                         amenity_ids.append(value)
-                        
+
+        
 place_amenity = Table("place_amenity", Base.metadata,
-                          Column("place_id", String(60), ForeignKey("places.id"),
+                          Column("place_id", String(60),
+                                 ForeignKey("places.id"),
                                  primary_key=True, nullable=False),
-                          Column("amenity_id", String(60), ForeignKey("amenities.id"),
+                          Column("amenity_id", String(60),
+                                 ForeignKey("amenities.id"),
                                  primary_key=True, nullable=False)
                           )
 
-    # city_id = ""
-    # user_id = ""
-    # name = ""
-    # description = ""
-    # number_rooms = 0
-    # number_bathrooms = 0
-    # max_guest = 0
-    # price_by_night = 0
-    # latitude = 0.0
-    # longitude = 0.0
-    # amenity_ids = []
+        # city_id = ""
+        # user_id = ""
+        # name = ""
+        # description = ""
+        # number_rooms = 0
+        # number_bathrooms = 0
+        # max_guest = 0
+        # price_by_night = 0
+        # latitude = 0.0
+        # longitude = 0.0
+        # amenity_ids = []

@@ -10,6 +10,7 @@ import unittest
 from models.base_model import BaseModel
 import models
 
+
 class test_basemodel(unittest.TestCase):
     """ """
 
@@ -99,7 +100,7 @@ class test_basemodel(unittest.TestCase):
         n = new.to_dict()
         new = BaseModel(**n)
         self.assertFalse(new.created_at == new.updated_at)
-        
+
     def test_documentation(self):
         """
         Test if there is documentation

@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
                 value = value.strip('"')
 
             if "_" in value:
-                value = value.replace("_", " ")      
+                value = value.replace("_", " ")
 
             setattr(instance, key, value)
 
@@ -220,7 +220,8 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(arg) >= 1:
             if args[0] in HBNBCommand.classes:
-                aux_dictionary = models.storage.all(HBNBCommand.classes[args[0]])
+                aux_dictionary = models.storage.all(
+                    HBNBCommand.classes[args[0]])
                 for key, value in aux_dictionary.items():
                     if key.split(".")[0] == args[0]:
                         string = str(value)
@@ -234,7 +235,6 @@ class HBNBCommand(cmd.Cmd):
                 string = str(value)
                 array.append(string)
             print(array)
-
 
     def help_all(self):
         """ Help information for the all command """
