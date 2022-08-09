@@ -222,10 +222,6 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) >= 1:
             if args[0] in HBNBCommand.classes:
                 aux_dictionary = models.storage.all(HBNBCommand.classes[args[0]])
-                #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                print("AAAAAAAAAAAAAA", aux_dictionary)
-                print("BBBBBBBBBBBBBB", models.storage.all())
-                #AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
                 for key, value in aux_dictionary.items():
                     if key.split(".")[0] == args[0]:
                         string = str(value)
