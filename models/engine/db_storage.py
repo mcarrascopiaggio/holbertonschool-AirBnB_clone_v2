@@ -26,63 +26,62 @@ class DBStorage:
     def __init__(self):
         """Init"""
 
-    self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}"
-                                    .format(MySQL_user, MySQL_password,
-                                    MySQL_host, MySQL_database,
-                                    pool_pre_ping=True))
-        
-        if getenv("HBNB_ENV")== "test":
+        self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}"
+                                .format(MySQL_user, MySQL_password,
+                                MySQL_host, MySQL_database,
+                                pool_pre_ping=True))
+
+        if getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
-            
+        
     def all(self, cls=None):
         """All objects"""
-        
+
         object_dict = {}
-        
+
         if cls is None:
-            objects = self.__session.query(User,State, Review,
-                                          Place, City, Amenity). all()
-            
+            objects = self.__session.query(User, State, Review,
+                                        Place, City, Amenity). all()
+
             for obj in objects:
                 obj_name = obj.__class__.__name__
                 obj_id = obj.id
-                
+
                 key = obj_name + "." + obj_id
-                
+
                 object_dict[key] = obj
         else:
             objects = self.__session.query(cls). all()
-            
+
             for obj in objects:
                 obj_name = obj.__class__.__name__
                 obj_id = obj.id
-                
+
                 key = obj_name + "." + obj_id
-                
+
                 object_dict[key] = obj
-    
+
         return object_dict
-            
+
     def new(self, obj):
         """Add new obj to db"""
         self.__session.add(obj)
-        
+
     def save(self):
         """Commit changes"""
         self.__session.commit()
-    
+
     def delete(self, obj=None):
         """Deletes an object"""
         if obj is not None:
             self.__session.delete(obj)
-    
-    def reload (self):
+
+    def reload(self):
         """Create all tables in the database"""
         Base.metadata.create_all(self.__engine)
-        
+
         Session = scoped_session(sessionmaker(
             bind=self.__engine, expire_on_commit=False
         ))
-        
+
         self.__session = Session()
-        
