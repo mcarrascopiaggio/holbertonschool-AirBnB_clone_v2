@@ -16,11 +16,11 @@ import unittest
 
 class test_console(unittest.TestCase):
     """Console Test"""
-    
+
     def initilize(self):
         """Create the command instance"""
         self.instance = HBNBCommand()
-        
+
     def test_documentation(self):
         """
         Test if there is documentation
