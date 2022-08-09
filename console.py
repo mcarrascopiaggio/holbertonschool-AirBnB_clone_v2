@@ -142,6 +142,7 @@ class HBNBCommand(cmd.Cmd):
 
         instance.save()
         print(instance.id)
+        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
