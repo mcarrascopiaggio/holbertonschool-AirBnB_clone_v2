@@ -6,7 +6,9 @@ import datetime
 from uuid import UUID
 import json
 import os
-
+import unittest
+from models.base_model import BaseModel
+import models
 
 class test_basemodel(unittest.TestCase):
     """ """
