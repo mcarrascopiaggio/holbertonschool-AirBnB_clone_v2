@@ -34,6 +34,8 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     
     reviews = relationship("Review", backref="place")
+    
+    place_amenities = relationship("Place", secondary=place_amenity)
 
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
@@ -42,7 +44,7 @@ class Place(BaseModel, Base):
             all_reviews = self.reviews
             reviews_array = []
             for key, value in all_reviews.items():
-                if self.id == value.revi_id:
+                if self.id == value.review_id:
                     reviews_array.append(value)
 
             return reviews_array
