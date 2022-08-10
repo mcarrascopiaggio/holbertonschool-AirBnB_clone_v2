@@ -63,6 +63,15 @@ class test_User(test_basemodel):
         self.assertEqual(test.last_name, "")
         self.assertTrue(issubclass(User, BaseModel))
 
+    def test_to_dict_User(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.user), True)
+
+    def test_save_User(self):
+        """test if the save works"""
+        self.user.save()
+        self.assertNotEqual(self.user.created_at, self.user.updated_at)
+
 
 if __name__ == "__main__":
     unittest.main()
