@@ -55,7 +55,7 @@ class test_Amenity(test_basemodel):
     def test_to_dict_Amenity(self):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.amenity), True)
-    
+
     def test_pep8_amenity(self):
         """Pep8 amenity.py"""
         style = pep8.StyleGuide(quiet=True)

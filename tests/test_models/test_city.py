@@ -57,7 +57,7 @@ class test_City(test_basemodel):
         test = City()
         self.assertEqual(type(test.name), str)
         self.assertEqual(type(test.state_id), str)
-    
+
     def test_pep8_city(self):
         """Pep8 city.py"""
         style = pep8.StyleGuide(quiet=True)

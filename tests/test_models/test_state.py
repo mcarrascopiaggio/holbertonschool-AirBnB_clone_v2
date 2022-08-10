@@ -49,7 +49,7 @@ class test_state(test_basemodel):
         """
         test = State()
         self.assertEqual(type(test.name), str)
-    
+
     def test_pep8_state(self):
         """Pep8 state.py"""
         style = pep8.StyleGuide(quiet=True)

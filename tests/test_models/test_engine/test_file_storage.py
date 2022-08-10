@@ -109,7 +109,7 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
-    
+
     def test_pep8_file_storage(self):
         """Pep8 file_storage.py"""
         style = pep8.StyleGuide(quiet=True)

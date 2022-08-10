@@ -129,7 +129,7 @@ class test_Place(test_basemodel):
         self.assertEqual(type(test.latitude), float)
         self.assertEqual(type(test.longitude), float)
         self.assertEqual(type(test.amenity_ids), list)
-    
+
     def test_pep8_place(self):
         """Pep8 place.py"""
         style = pep8.StyleGuide(quiet=True)

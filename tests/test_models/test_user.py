@@ -90,7 +90,7 @@ class test_User(test_basemodel):
         cls.user.last_name = "Reyes"
         cls.user.email = "juanmanuelreyesarrambide@gmail.com"
         cls.user.password = "password"
-    
+
     def test_pep8_user(self):
         """Pep8 user.py"""
         style = pep8.StyleGuide(quiet=True)

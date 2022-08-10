@@ -65,7 +65,7 @@ class test_review(test_basemodel):
         self.assertEqual(type(test.place_id), str)
         self.assertEqual(type(test.user_id), str)
         self.assertEqual(type(test.text), str)
-    
+
     def test_pep8_review(self):
         """Pep8 review.py"""
         style = pep8.StyleGuide(quiet=True)

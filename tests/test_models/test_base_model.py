@@ -194,7 +194,7 @@ class test_basemodel(unittest.TestCase):
         """test date"""
         obj1 = BaseModel()
         self.assertEqual(obj1.created_at, obj1.updated_at)
-    
+
     def test_pep8_base_model(self):
         """Pep8 base_model.py"""
         style = pep8.StyleGuide(quiet=True)
