@@ -33,6 +33,15 @@ class BaseModel:
                 if key != '__class__':
                     setattr(self, key, value)
 
+            if 'id' not in kwargs:
+                self.id = str(uuid.uuid4())
+
+            if 'created_at' not in kwargs:
+                self.created_at = datetime.now()
+
+            if 'updated_at' not in kwargs:
+                self.updated_at = datetime.now()
+
             # del kwargs['__class__']
             # self.__dict__.update(kwargs)
 

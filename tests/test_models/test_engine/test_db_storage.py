@@ -12,3 +12,4 @@ class test_dbStorage(unittest.TestCase):
                          "DBStorage class needs a docstring")
         self.assertTrue(len(DBStorage.__doc__) >= 1,
                         "DBStorage class needs a docstring")
+

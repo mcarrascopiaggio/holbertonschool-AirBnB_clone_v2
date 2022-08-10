@@ -14,6 +14,7 @@ import console
 from models.engine.file_storage import FileStorage
 import unittest
 
+
 class test_console(unittest.TestCase):
     """Console Test"""
 
@@ -27,3 +28,17 @@ class test_console(unittest.TestCase):
         """
         self.assertTrue(len(console.__doc__) > 0)
         self.assertTrue(len(HBNBCommand.__doc__) > 0)
+
+    def test_docstrings_in_console(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(console.__doc__)
+        self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_update.__doc__)
+        self.assertIsNotNone(HBNBCommand.count.__doc__)
+        self.assertIsNotNone(HBNBCommand.default.__doc__)
