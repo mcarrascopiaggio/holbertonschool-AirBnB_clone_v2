@@ -46,6 +46,15 @@ class test_Amenity(test_basemodel):
         test = Amenity()
         self.assertEqual(type(test.name), str)
 
+    def test_save_Amenity(self):
+        """test if the save works"""
+        self.amenity.save()
+        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+
+    def test_to_dict_Amenity(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.amenity), True)
+
 
 if __name__ == "__main__":
     unittest.main()

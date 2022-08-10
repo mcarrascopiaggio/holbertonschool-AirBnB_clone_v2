@@ -72,6 +72,24 @@ class test_User(test_basemodel):
         self.user.save()
         self.assertNotEqual(self.user.created_at, self.user.updated_at)
 
+    @classmethod
+    def setUpClass(cls):
+        """set up for test"""
+        cls.user = User()
+        cls.user.first_name = "Marcela"
+        cls.user.last_name = "Carrasco"
+        cls.user.email = "mcarrascopiaggio@gmail.com"
+        cls.user.password = "password"
+
+    @classmethod
+    def setUpClass(cls):
+        """set up for test"""
+        cls.user = User()
+        cls.user.first_name = "Juan Manuel"
+        cls.user.last_name = "Reyes"
+        cls.user.email = "juanmanuelreyesarrambide@gmail.com"
+        cls.user.password = "password"
+
 
 if __name__ == "__main__":
     unittest.main()
