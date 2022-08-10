@@ -9,6 +9,7 @@ import os
 import unittest
 from models.base_model import BaseModel
 import models
+from os import getenv
 
 
 class test_basemodel(unittest.TestCase):
@@ -50,6 +51,8 @@ class test_basemodel(unittest.TestCase):
         with self.assertRaises(TypeError):
             new = BaseModel(**copy)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db',
+                     "skip if db")
     def test_save(self):
         """ Testing save """
         i = self.value()
