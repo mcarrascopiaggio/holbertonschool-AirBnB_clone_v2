@@ -13,6 +13,7 @@ import models
 import console
 from models.engine.file_storage import FileStorage
 import unittest
+import pep8
 
 
 class test_console(unittest.TestCase):
@@ -42,3 +43,13 @@ class test_console(unittest.TestCase):
         self.assertIsNotNone(HBNBCommand.do_update.__doc__)
         self.assertIsNotNone(HBNBCommand.count.__doc__)
         self.assertIsNotNone(HBNBCommand.default.__doc__)
+
+    def test_pep8_console(self):
+        """Pep8 console.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["console.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
+
+
+if __name__ == "__main__":
+    unittest.main()

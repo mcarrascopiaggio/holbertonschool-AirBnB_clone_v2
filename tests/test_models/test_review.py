@@ -5,6 +5,7 @@ from models.review import Review
 import unittest
 import models
 from models.base_model import BaseModel, Base
+import pep8
 
 
 class test_review(test_basemodel):
@@ -64,6 +65,12 @@ class test_review(test_basemodel):
         self.assertEqual(type(test.place_id), str)
         self.assertEqual(type(test.user_id), str)
         self.assertEqual(type(test.text), str)
+    
+    def test_pep8_review(self):
+        """Pep8 review.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/review.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":

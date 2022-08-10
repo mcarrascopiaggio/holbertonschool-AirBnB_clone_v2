@@ -5,6 +5,7 @@ from models.state import State
 import unittest
 import models
 from models.base_model import BaseModel, Base
+import pep8
 
 
 class test_state(test_basemodel):
@@ -48,6 +49,12 @@ class test_state(test_basemodel):
         """
         test = State()
         self.assertEqual(type(test.name), str)
+    
+    def test_pep8_state(self):
+        """Pep8 state.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/state.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":

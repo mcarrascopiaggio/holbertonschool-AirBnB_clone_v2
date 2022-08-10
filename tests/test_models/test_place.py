@@ -5,6 +5,7 @@ from models.place import Place
 import unittest
 import models
 from models.base_model import BaseModel, Base
+import pep8
 
 
 class test_Place(test_basemodel):
@@ -128,6 +129,12 @@ class test_Place(test_basemodel):
         self.assertEqual(type(test.latitude), float)
         self.assertEqual(type(test.longitude), float)
         self.assertEqual(type(test.amenity_ids), list)
+    
+    def test_pep8_place(self):
+        """Pep8 place.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/place.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":

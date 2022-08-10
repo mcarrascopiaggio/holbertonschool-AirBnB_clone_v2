@@ -5,6 +5,7 @@ from models.user import User
 import unittest
 import models
 from models.base_model import BaseModel, Base
+import pep8
 
 
 class test_User(test_basemodel):
@@ -89,6 +90,12 @@ class test_User(test_basemodel):
         cls.user.last_name = "Reyes"
         cls.user.email = "juanmanuelreyesarrambide@gmail.com"
         cls.user.password = "password"
+    
+    def test_pep8_user(self):
+        """Pep8 user.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/user.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":

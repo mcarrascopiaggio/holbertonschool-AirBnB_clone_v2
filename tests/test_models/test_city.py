@@ -5,6 +5,7 @@ from models.city import City
 import unittest
 from models.base_model import BaseModel
 import models
+import pep8
 
 
 class test_City(test_basemodel):
@@ -56,6 +57,12 @@ class test_City(test_basemodel):
         test = City()
         self.assertEqual(type(test.name), str)
         self.assertEqual(type(test.state_id), str)
+    
+    def test_pep8_city(self):
+        """Pep8 city.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/city.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":

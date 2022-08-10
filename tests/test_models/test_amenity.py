@@ -5,6 +5,7 @@ from tests.test_models.test_base_model import test_basemodel
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 import models
+import pep8
 
 
 class test_Amenity(test_basemodel):
@@ -54,6 +55,12 @@ class test_Amenity(test_basemodel):
     def test_to_dict_Amenity(self):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.amenity), True)
+    
+    def test_pep8_amenity(self):
+        """Pep8 amenity.py"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(["models/amenity.py"])
+        self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
 
 if __name__ == "__main__":
