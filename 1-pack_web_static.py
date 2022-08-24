@@ -17,5 +17,5 @@ def do_pack():
     try:
         local("tar -czvf " + name + " web_static")
         return name
-    except as exception:
+    except Exception:
         return None
