@@ -44,14 +44,15 @@ def do_deploy(archive_path):
     except Exception:
         return False
 
+
 def deploy():
-"""
-creates and distributes an archive to your web servers
-"""
-route = do_pack()
-    if route is None:
+    """
+    creates and distributes an archive to your web servers
+    """
+    local_path = do_pack()
+    if local_path is None:
         return False
-    dep = do_deploy(route)
-    if dep is False:
+    deploy = do_deploy(local_path)
+    if depply is False:
         return False
-    return dep
+    return deploy
