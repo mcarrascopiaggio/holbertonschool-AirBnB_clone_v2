@@ -9,6 +9,16 @@ from os import path
 env.hosts = ['54.87.154.255', '54.172.224.147']
 env.user = "ubuntu"
 
+def do_pack():
+    """do_pack function"""
+    local("mkdir -p versions")
+    now = datetime.now()
+    name = "versions/web_static_" + now.strftime("%Y%m%d%H%M%S") + ".tgz"
+    try:
+        local("tar -czvf " + name + " web_static")
+        return name
+    except Exception:
+        return None
 
 def do_deploy(archive_path):
     """function to distribute an archive to web server"""
