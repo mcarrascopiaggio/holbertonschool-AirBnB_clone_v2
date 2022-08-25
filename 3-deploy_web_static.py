@@ -53,6 +53,6 @@ def deploy():
     if local_path is None:
         return False
     deploy = do_deploy(local_path)
-    if depply is False:
+    if deploy is False:
         return False
     return deploy
