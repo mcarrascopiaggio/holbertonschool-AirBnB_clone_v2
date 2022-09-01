@@ -10,7 +10,6 @@ You must use the option strict_slashes=False in your route definition
 """
 
 from flask import Flask
-from flask import request
 
 app = Flask(__name__)
 
@@ -27,11 +26,10 @@ def HBNB():
     return "HBNB"
 
 
-@app.route("/hbnb", strict_slashes=False)
-def text():
-    """display “C ” followed by the value of the text variable”"""
-    param = request.args.get("text")
-    return "C {}".format(text)
+@app.route('/c/<text>', strict_slashes=False)
+def elc(text):
+    """Function thant display C followed by text"""
+    return "C {}".format(text.replace("_", " "))
 
 
 if __name__ == '__main__':
