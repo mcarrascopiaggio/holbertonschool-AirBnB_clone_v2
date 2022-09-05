@@ -16,16 +16,25 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def tear_down(self):
-    """Closing DB"""
+def teardown(self):
+    """
+    close sql
+    """
     storage.close()
 
 
 @app.route("/states_list", strict_slashes=False)
-def states_list():
+def stateslist():
     """Displaying list of states"""
-    states = storage.all(State).values()
-    return render_template("7-states_list.html", states=states)
+    all_states = storage.all(State).values()
+    return render_template("7-states_list.html", all_states=all_states)
+
+
+# @app.route("/states_list", strict_slashes=False)
+# def states_list():
+#    """Displaying list of states"""
+#    states = storage.all(State).values()
+#    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == '__main__':
