@@ -7,10 +7,8 @@ Call in this method storage.close()
 Routes: /states_list: display a HTML page: (inside the tag BODY)
 
 """
-from os import stat
 from flask import Flask, render_template
 from models import storage
-from models import state
 from models.state import State
 
 
@@ -23,11 +21,11 @@ def tear_down(self):
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
+@app.route("/states_list", strict_slashes=False)
 def states_list():
     """Displaying list of states"""
     states = storage.all(State).values()
-    return render_template('7-states_list.html', states=states)
+    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == '__main__':
